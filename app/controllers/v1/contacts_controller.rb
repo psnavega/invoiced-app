@@ -15,15 +15,14 @@ class V1::ContactsController < ApplicationController
   def destroy
     @contact = Contact.where(id: params[:id]).first
 
-    if @contact.destroy:
+    if @contact.destroy
       head(:ok)
-    else:
+    else
       head(:unprocessable_entity)
     end
   end
 
-  private def contact_params() 
+  private def contact_params
     params.require(:contact).permit(:first_name, :last_name, :email)
   end
-
 end
